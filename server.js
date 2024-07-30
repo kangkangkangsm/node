@@ -57,6 +57,25 @@ app.get('/list', async (req, res) => {
   }
 });
 
+app.get('/update', async (req, res) => {
+  const { stuNo , stuName, stuDept, stuGrade, stuGender } = req.query;
+  var  query = `UPDATE STUDENT SET 
+                  STU_NAME = '${stuName}',
+                  STU_DEPT = '${stuDept}',
+                  STU_GRADE = '${stuGrade}',
+                  STU_GENDER = '${stuGender}'
+                  WHERE STU_NO = '${stuNo}'`
+  try {
+    await connection.execute(
+      query, [], {autoCommit :true}
+    );
+    res.json([{message : "저장되었습니다!"}]);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).send('Error executing query');
+  }
+});
+
 app.get('/delete', async (req, res) => {
   const { stuNo } = req.query;
   try {
@@ -70,6 +89,18 @@ app.get('/delete', async (req, res) => {
   }
 });
 
+// app.get('/update', async (req, res) => {
+//   const { stuNo } = req.query;
+//   try {
+//     await connection.execute(
+//       `DELETE FROM STUDENT WHERE STU_NO='${stuNo}'`, [], {autoCommit :true}
+//     );
+//     res.json([{message : "삭제되었습니다!"}]);
+//   } catch (error) {
+//     console.error('Error executing query', error);
+//     res.status(500).send('Error executing query');
+//   }
+// });
 
 // app.get('/search', async (req, res) => {
 //   const { id } = req.query;
