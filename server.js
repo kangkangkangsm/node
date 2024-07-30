@@ -75,7 +75,6 @@ app.get('/update', async (req, res) => {
     res.status(500).send('Error executing query');
   }
 });
-
 app.get('/delete', async (req, res) => {
   const { stuNo } = req.query;
   try {
@@ -89,6 +88,19 @@ app.get('/delete', async (req, res) => {
   }
 });
 
+app.get('/insert', async (req, res) => {
+  const { sno, sname, sdept, sgrade, sgender } = req.query;
+  console.log(sno)
+  try {
+    await connection.execute(
+      `INSERT INTO STUDENT(STU_NO,STU_NAME,STU_DEPT,STU_GRADE,STU_GENDER) VALUES('${sno}','${sname}','${sdept}','${sgrade}','${sgender})`, [], {autoCommit :true}
+    );
+    res.json([{message : "넣었슴!"}]);
+  } catch (error) {
+    console.error('Error executing query', error);
+    res.status(500).send('Error executing query');
+  }
+});
 // app.get('/update', async (req, res) => {
 //   const { stuNo } = req.query;
 //   try {
