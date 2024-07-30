@@ -89,13 +89,12 @@ app.get('/delete', async (req, res) => {
 });
 
 app.get('/insert', async (req, res) => {
-  const { sno, sname, sdept, sgrade, sgender } = req.query;
-  console.log(sno)
+  const { stuNo, stuName, stuDept, stuGrade, stuGender } = req.query;
   try {
     await connection.execute(
-      `INSERT INTO STUDENT(STU_NO,STU_NAME,STU_DEPT,STU_GRADE,STU_GENDER) VALUES('${sno}','${sname}','${sdept}','${sgrade}','${sgender})`, [], {autoCommit :true}
+      `INSERT INTO STUDENT(STU_NO,STU_NAME,STU_DEPT,STU_GRADE,STU_GENDER) VALUES('${stuNo}','${stuName}','${stuDept}','${stuGrade}','${stuGender}')`, [], {autoCommit :true}
     );
-    res.json([{message : "넣었슴!"}]);
+    res.json({message : "넣었슴!"});
   } catch (error) {
     console.error('Error executing query', error);
     res.status(500).send('Error executing query');
