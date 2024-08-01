@@ -99,10 +99,13 @@ app.get('/login', async (req, res) => {
 // 정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬정렬
 app.get('/list', async (req, res) => {
   const {keyword, grade, orderby, orderlist} = req.query;
-  console.log(orderby, orderlist)
+  
+  console.log(`SELECT * FROM STUDENT WHERE (STU_NAME LIKE '%${keyword}%' OR STU_NO LIKE '%${keyword}%') AND STU_GRADE LIKE '%${grade}%' ORDER BY ${orderlist} ${orderby}`);
   try {
     const result = await connection.execute(`SELECT * FROM STUDENT WHERE (STU_NAME LIKE '%${keyword}%' OR STU_NO LIKE '%${keyword}%') AND STU_GRADE LIKE '%${grade}%' ORDER BY ${orderlist} ${orderby}`);
+    
     const columnNames = result.metaData.map(column => column.name);
+
     // 쿼리 결과를 JSON 형태로 변환
     const rows = result.rows.map(row => {
       // 각 행의 데이터를 컬럼명에 맞게 매핑하여 JSON 객체로 변환
