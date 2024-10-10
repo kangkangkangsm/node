@@ -19,3 +19,13 @@ printFunc(sum);
 printFunc(mul);
 print("==========================================");
 printFunc(mul);
+
+function mnu(x,y){
+    console.log(x-y);
+}
+
+function printFunc2(param){
+    param(3,5);
+}
+
+printFunc2(mnu);

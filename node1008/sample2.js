@@ -14,3 +14,10 @@ printFunc(function (x,y){
 printFunc((x,y)=>{console.log(x*y)});
 // 화살표함수 중괄호 생략 가능 
 printFunc((x,y)=>console.log(x*y));
+
+
+function printa(){
+    console.log("내가그랬어")
+}
+
+printa();
