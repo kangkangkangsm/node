@@ -1,0 +1,52 @@
+2024-10-10
+
+[3]
+node.js , react.js , aws 
+
+react.js // 따로 공부해야함. 
+
+스프링 TiemLoof
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TimeLoopTask {
+
+    @Scheduled(fixedRate = 5000) // 매 5초마다 실행
+    public void executeTask() {
+        System.out.println("Task is executing every 5 seconds");
+    }
+}
+
+commonJS <-- 모듈화 방식으로 간단하게 살펴볼예정
+[4]
+[5]
+테스트
+[6]
+
+//작업중인 파일목록 보여줌
+const fs = require("fs");
+
+// 파일내용 보여줌 readFile
+//utf8 < 인코딩 방식
+fs.readFile("text.txt","utf8",(err,data)=>{
+    if(err){
+        console.log(err);
+        return;
+    }
+    //console.log(data.toString());
+    console.log(data);
+});
+
+//파일목록 보여줌 readdir
+const fs = require("fs");
+fs.readdir("./",(err,files)=>{
+    if(err){
+        console.log("오류!",err);
+        return;
+    }
+    console.log(files);
+});
+
+[7] 현수씨 개꿀팁 
+post man
