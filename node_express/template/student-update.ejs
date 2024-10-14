@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/student/search/<%= list.stuNo %>?_method=PUT" method="POST">
+    <div><label>학번 :<input type="text" name="stuNo" value=<%=list.stuNo %> disabled></label> </div>
+    <div><label>이름 :<input type="text" name="stuName" value=<%=list.stuName %>></label> </div>
+    <div><label>학과 :<input type="text" name="stuDept" value=<%=list.stuDept %>></label> </div>
+    <div><label>학년 :<input type="text" name="stuGrade" value=<%=list.stuGrade %>></label></div>
+    <button type="submit">수정</button>
+</form>
+</body>
+</html>

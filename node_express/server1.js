@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 //여기서 express라는 도구를 가져와서 쓸 준비를 해. 이 도구는 우리가 서버를 만들고 쉽게 요청과 응답을 주고받을 수 있게 도와줘.
 const app = express()
 //app은 우리가 사용하는 서버라고 생각하면 돼. 이제 이 app이라는 친구가 우리가 설정한 규칙대로 일하게 할 거야.
@@ -11,8 +12,11 @@ app.set("views", "./template");
 //위에 두 줄은 우리가 서버에서 HTML 파일을 쉽게 만들고 보여줄 수 있게 도와주는 설정이야. EJS라는 도구를 사용하는 건데, 이걸 쓰면 HTML처럼 생긴 파일에 자바스크립트 코드를 넣어서 동적인 웹페이지를 만들 수 있어.
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
+app.use(methodOverride('_method'));
 
 app.use("/board", require("./route/boardRoute"));
+app.use("/user", require("./route/userRoute"));
+app.use("/student", require("./route/studentRoute"));
 // "/"는 기본 경로를 의미해. 즉, 이 서버에 접속할 때 모든 경로에서 이 파일의 규칙을 따를 수 있다는 뜻이야.
 // **require("./route/boardRoute")**는 boardRoute라는 파일을 가져오라는 명령이야. 그 파일에는 우리가 정한 여러 경로와 그에 따른 규칙들이 들어있어.
 // 이제 이 boardRoute 파일에서 만들어둔 규칙들을 서버에 적용해서, 사람들이 요청을 보내면 그 규칙대로 응답해주는 거야.

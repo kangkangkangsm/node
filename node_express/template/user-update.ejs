@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>업데이트</h1>
+    <form action="/user/search/<%= list.id %>?_method=PUT" method="POST">
+        <div>ID :<label> <input type="text" name="id" value=<%=list.id %> disabled> </label> </div>
+        <div>PWD : <label><input type="text" name="pwd" value=<%=list.pwd %>> </label> </div>
+        <div>NAME : <label> <input type="text" name="name" value=<%=list.name %>> </label> </div>
+        <div>GENDER : <label><input type="radio" name="gender" value= "M" <%=list.gender == 'M' ? "checked" : "" %>> 남자</label>
+                      <label><input type="radio" name="gender" value= "F" <%=list.gender == 'F' ? "checked" : "" %>> 여자</label>
+        </div>
+        <button type="submit">수정</button>
+    </form>
+</body>
+</html>
